@@ -54,8 +54,8 @@ class Rectangulo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 300,
-      height: 300,
+      width: 250,
+      height: 250,
       decoration: BoxDecoration(color: Colors.blue),
     );
   }
