@@ -1,16 +1,81 @@
-# flutter_sliver_app_bar
+# - SliverAppBar #11
+main.dart
+```dart
+import 'dart:math';
 
-A new Flutter project.
+import 'package:flutter/material.dart';
 
-## Getting Started
+void main() => runApp(MyApp());
 
-This project is a starting point for a Flutter application.
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Material App',
+      home: MiPagina(),
+    );
+  }
+}
 
-A few resources to get you started if this is your first Flutter project:
+class MiPagina extends StatelessWidget {
+  final rnd = new Random();
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+  final List<Color> colores = [
+    Colors.red,
+    Colors.blueAccent,
+    Colors.redAccent,
+    Colors.blue,
+    Colors.purpleAccent,
+    Colors.black,
+    Colors.yellowAccent,
+    Colors.green,
+    Colors.greenAccent,
+    Colors.pink,
+    Colors.purple,
+    Colors.pinkAccent,
+    Colors.yellow,
+    Colors.yellow,
+  ];
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  @override
+  Widget build(BuildContext context) {
+    final List<Widget> items = List.generate(
+      100,
+      (i) => Container(
+        width: double.infinity,
+        height: 150,
+        color: colores[rnd.nextInt(this.colores.length)],
+      ),
+    );
+
+    /*return Scaffold(
+      body: ListView.builder(
+        itemBuilder: (BuildContext context, int index) {
+          return items[index];
+        },
+      ),
+    );*/
+
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            floating: true,
+            pinned: true,
+            title: Text('SliverApp'),
+            expandedHeight: 200,
+            flexibleSpace: Image.network(
+              'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F4.bp.blogspot.com%2F_NQ_Qdpp-7ro%2FSpBc_E393KI%2FAAAAAAAACVI%2Fn0s2M1vriSE%2Fs400%2F20090816Appenzell(Landscape)10.jpg&f=1&nofb=1',
+              fit: BoxFit.cover,
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate(items),
+          ),
+        ],
+      ),
+    );
+  }
+}
+```
