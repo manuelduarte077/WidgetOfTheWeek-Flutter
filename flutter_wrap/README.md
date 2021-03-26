@@ -1,16 +1,125 @@
-# flutter_wrap
 
-A new Flutter project.
 
-## Getting Started
+# - [Wrap #3](https://github.com/manuelduarte077/WidgetOfTheWeek-Flutter/tree/main/flutter_wrap)
 
-This project is a starting point for a Flutter application.
+main.dart
+```dart
+import 'package:flutter/material.dart';
+import 'row_Example.dart';
 
-A few resources to get you started if this is your first Flutter project:
+void main() => runApp(MyApp());
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Wrap',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Wrap'),
+        ),
+        body: Center(
+          child: WrapTag(),
+        ),
+      ),
+    );
+  }
+}
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+class WrapTag extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      alignment: WrapAlignment.center,
+      spacing: 10.0, // gap between adjacent chips
+      children: <Widget>[
+        WrapTagChip('Thanos'),
+        WrapTagChip('Thanos'),
+        WrapTagChip('Thanos'),
+        WrapTagChip('Thanos'),
+        WrapTagChip('Thanos'),
+        WrapTagChip('Thanos'),
+        WrapTagChip('Thanos'),
+        WrapTagChip('Thanos'),
+        WrapTagChip('Thanos'),
+        WrapTagChip('Thanos'),
+        WrapTagChip('Thanos'),
+        WrapTagChip('Thanos'),
+        WrapTagChip('Thanos'),
+        WrapTagChip('Thanos'),
+        WrapTagChip('Thanos'),
+      ],
+    );
+  }
+}
+
+class WrapTagChip extends StatelessWidget {
+  final String texto;
+
+  WrapTagChip(this.texto);
+
+  @override
+  Widget build(BuildContext context) {
+    return Chip(
+      avatar: CircleAvatar(
+        backgroundColor: Colors.white,
+        child: Text(this.texto[0]),
+      ),
+      label: Text(
+        texto,
+        style: TextStyle(color: Colors.white),
+      ),
+      backgroundColor: Colors.blue,
+    );
+  }
+}
+```
+row_Example.dart
+```dart
+import 'package:flutter/material.dart';
+
+class RowExample extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Center(
+          child: Row(
+            children: [
+              Tag('Thanos'),
+              Tag('Super Man'),
+              Tag('Batman'),
+              Tag('Flash'),
+              Tag('Smash'),
+              Tag('Robot'),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Tag extends StatelessWidget {
+  final String texto;
+
+  Tag(this.texto);
+
+  @override
+  Widget build(BuildContext context) {
+    return Chip(
+      avatar: CircleAvatar(
+        child: Text(this.texto[0]),
+        backgroundColor: Colors.white,
+      ),
+      label: Text(
+        texto,
+        style: TextStyle(color: Colors.white),
+      ),
+      backgroundColor: Colors.blue,
+    );
+  }
+}
+```
