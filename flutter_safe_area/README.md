@@ -1,16 +1,36 @@
-# flutter_safe_area
+ # - [SafeArea #1](https://github.com/manuelduarte077/WidgetOfTheWeek-Flutter/tree/main/flutter_safe_area)
+  main.dart
+```dart
+import 'package:flutter/material.dart';
 
-A new Flutter project.
+void main() {
+  runApp(MyApp());
+}
 
-## Getting Started
+class MyApp extends StatelessWidget {
+  final estilo = TextStyle(fontSize: 20);
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: SafeArea(
+          bottom: false,
+          left: true,
+          child: ListView(
+            children: List.generate(
+              100,
+              (i) => Text(
+                '$i - Hola Mundo',
+                style: estilo,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
