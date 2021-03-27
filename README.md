@@ -1,12 +1,64 @@
 # WidgetOfTheWeek - Flutter
 
+ - [Expanded #2](https://github.com/manuelduarte077/WidgetOfTheWeek-Flutter/tree/main/flutter_expanded)
  - [Wrap #3](https://github.com/manuelduarte077/WidgetOfTheWeek-Flutter/tree/main/flutter_wrap)
  - [PageView #9](https://github.com/manuelduarte077/WidgetOfTheWeek-Flutter/tree/main/flutter_wrap)
  - [Table #10](https://github.com/manuelduarte077/WidgetOfTheWeek-Flutter/tree/main/flutter_wrap)
  - [SliverAppBar #11](https://github.com/manuelduarte077/WidgetOfTheWeek-Flutter/tree/main/flutter_sliver_app_bar)
 
+ ## - [Expanded #2](https://github.com/manuelduarte077/WidgetOfTheWeek-Flutter/tree/main/flutter_expanded)
+ main.dart
+```dart
+import 'package:flutter/material.dart';
 
+void main() => runApp(MyApp());
 
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Expanded ',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Expanded '),
+        ),
+        body: Center(
+          child: Row(
+            children: <Widget>[
+              Cuadrado(Colors.blueAccent),
+              Expanded(
+                flex: 2,
+                child: Cuadrado(Colors.black),
+              ),
+              Expanded(
+                child: Cuadrado(Colors.black),
+              ),
+              Cuadrado(Colors.pink),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Cuadrado extends StatelessWidget {
+  final Color color;
+
+  Cuadrado(this.color);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      width: 50.0,
+      height: 50.0,
+      decoration: BoxDecoration(color: this.color),
+    );
+  }
+}
+```
 
 ## - [Wrap #3](https://github.com/manuelduarte077/WidgetOfTheWeek-Flutter/tree/main/flutter_wrap)
 main.dart
